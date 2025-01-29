@@ -9,17 +9,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.demojetgitusers.presentation.users_screen.UsersScreen
-import com.example.demojetgitusers.presentation.users_screen.UsersViewModel
 import com.example.demojetgitusers.ui.theme.DemoJetGitUsersTheme
-import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
 
-    @Inject
+    //@Inject
     //lateinit var viewModelFactory: ViewModelProvider.Factory
+    //lateinit var usersViewModel: UsersViewModel
 
-    lateinit var usersViewModel: UsersViewModel
+    //@Inject
+    //lateinit var followersViewModel: FollowersViewModel
 
     //private val usersViewModel: UsersViewModel by viewModels { viewModelFactory } // аналог вещи ниже
 
@@ -27,7 +26,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appComponent.inject(this) // создание всех необходимых зависимостей
+        //appComponent.inject(this) // создание всех необходимых зависимостей
 
          //usersViewModel = ViewModelProvider(this, viewModelFactory)[UsersViewModel::class.java]
         // viewModelProvider управляет созданием и хранением viewModel экземпляров,
@@ -42,7 +41,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .padding(top = 24.dp)
                 ) {
-                    UsersScreen(usersViewModel)
+                    AppNavigation()
                 }
             }
         }

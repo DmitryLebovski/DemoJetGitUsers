@@ -2,6 +2,10 @@ package com.example.demojetgitusers
 
 import android.app.Application
 import android.content.Context
+import com.example.demojetgitusers.components.AppComponent
+import com.example.demojetgitusers.components.DaggerAppComponent
+import com.example.demojetgitusers.components.FollowersSubcomponent
+import com.example.demojetgitusers.components.UsersSubcomponent
 
 class DemoJetGitApp: Application() {
     lateinit var appComponent: AppComponent
@@ -17,3 +21,11 @@ val Context.appComponent: AppComponent
         is DemoJetGitApp -> appComponent
         else -> this.applicationContext.appComponent
     }
+
+fun Context.createFollowersComponent(): FollowersSubcomponent {
+    return appComponent.followersSubcomponent().create()
+}
+
+fun Context.createUsersComponent(): UsersSubcomponent {
+    return appComponent.usersSubcomponent().create()
+}

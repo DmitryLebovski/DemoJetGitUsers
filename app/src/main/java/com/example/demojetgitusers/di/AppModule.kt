@@ -3,11 +3,7 @@ package com.example.demojetgitusers.di
 //import com.example.demojetgitusers.presentation.users_screen.DaggerViewModelFactory
 import android.app.Application
 import android.content.Context
-import com.example.demojetgitusers.data.FollowersRepositoryImpl
 import com.example.demojetgitusers.data.UserApi
-import com.example.demojetgitusers.data.UserRepositoryImpl
-import com.example.demojetgitusers.domain.repository.FollowersRepository
-import com.example.demojetgitusers.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -27,14 +23,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
-
-    @Provides
-    @Singleton
-    fun provideUserRepository(api: UserApi): UserRepository = UserRepositoryImpl(api)
-
-    @Provides
-    @Singleton
-    fun provideFollowersRepository(api: UserApi): FollowersRepository = FollowersRepositoryImpl(api)
 
     @Provides
     @Singleton

@@ -14,26 +14,33 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.demojetgitusers.CheckConnection
 import com.example.demojetgitusers.R
+import com.example.demojetgitusers.Routes.FOLLOWERS_SCREEN
 import com.example.demojetgitusers.UsersState
+import com.example.demojetgitusers.createUsersComponent
 import com.example.demojetgitusers.reusable_components.UserCard
 import com.example.jetgitusers.reusable_components.ShimmerUserList
 
 @Composable
-fun UsersScreen(
-    viewModel: UsersViewModel,
+fun UsersScreen (
+    navController: NavController
 ) {
     val context = LocalContext.current
+
+    val usersComponent = remember { context.createUsersComponent() }
+    val viewModel = remember { usersComponent.usersViewModel() }
+
     val uiState by viewModel.uiState.collectAsState()
     val lazyListState = rememberLazyListState()
-
 
     when (uiState) {
         is UsersState.Loading -> {
@@ -60,7 +67,9 @@ fun UsersScreen(
                             login = user.login,
                             avatarUrl = user.avatar_url,
                             followers = user.followers,
-                            onClick = { }
+                            onClick = {
+                                navController.navigate("$FOLLOWERS_SCREEN/${user.login}")
+                            }
                         )
                     }
                 }
