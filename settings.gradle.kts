@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "DemoJetGitUsers"
 include(":app")
- 
+include(":followers")

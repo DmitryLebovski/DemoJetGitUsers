@@ -27,10 +27,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.demojetgitusers.DemoJetGitApp
 import com.example.demojetgitusers.R
 import com.example.demojetgitusers.UsersState
+import com.example.demojetgitusers.appComponent
 import com.example.demojetgitusers.createFollowersComponent
 import com.example.demojetgitusers.presentation.users_screen.ErrorScreen
+import com.example.demojetgitusers.presentation.users_screen.UsersViewModel
 import com.example.demojetgitusers.reusable_components.UserCard
 import com.example.jetgitusers.reusable_components.ShimmerUserList
 import kotlinx.coroutines.delay
@@ -41,11 +45,15 @@ fun FollowersScreen(
     username: String,
     popBackStack: () -> Unit,
     navigateToFollowers: (String) -> Unit,
+//    viewModel: FollowersViewModel
 ){
     val context = LocalContext.current
 
     val followersComponent = remember { context.createFollowersComponent() }
     val viewModel = remember { followersComponent.followersViewModel() }
+
+//    val factory = (LocalContext.current.applicationContext as DemoJetGitApp).appComponent.getViewModelFactory()
+//    val viewModel: FollowersViewModel = viewModel(factory = factory)
 
     val uiState by viewModel.uiState.collectAsState()
 

@@ -3,12 +3,22 @@ package com.example.demojetgitusers.di
 //import com.example.demojetgitusers.presentation.users_screen.DaggerViewModelFactory
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.demojetgitusers.data.UserApi
+import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
+import com.example.demojetgitusers.presentation.users_screen.UsersViewModel
+import dagger.Binds
+import dagger.MapKey
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoMap
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Provider
 import javax.inject.Singleton
+import kotlin.reflect.KClass
 
 
 @Module
@@ -29,21 +39,46 @@ object AppModule {
     fun provideApplicationContext(application: Application): Context = application.applicationContext
     // application: Application автоматически берется из BindInstance
 
-}
 //
+//    @Provides
+//    @Singleton
+//    fun provideViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory = factory
+}
+
 //@Module
-//abstract class ViewModelModule { //кастомная аннотация для хранения map в привязке к viewmodel
-//    @MustBeDocumented
+//abstract class ViewModelModule {
 //    @Target(AnnotationTarget.FUNCTION)
 //    @Retention(AnnotationRetention.RUNTIME)
 //    @MapKey
-//    annotation class ViewModelKey(val value: KClass<out ViewModel>) //метаинформация о классе
+//    annotation class ViewModelKey(val value: KClass<out ViewModel>)
+//
 //
 //    @Binds
-//    @IntoMap // указывает dagger, что эта view model должна быть добавлена в map
-//    @ViewModelKey(UsersViewModel::class)
-//    abstract fun bindUsersViewModel(usersViewModel: UsersViewModel): ViewModel
-//
-//    @Binds // при запросе к ViewModelProvider.Factory - предоставить экземпляр DaggerViewModelFActory
 //    abstract fun bindViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
+//
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(FollowersViewModel::class)
+//    abstract fun bindFollowersViewModel(viewModel: FollowersViewModel): ViewModel
+//
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(UsersViewModel::class)
+//    abstract fun bindUsersViewModel(viewModel: UsersViewModel): ViewModel
+//}
+//
+//@Singleton
+//class DaggerViewModelFactory @Inject constructor(
+//    private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+//) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        val creator = creators[modelClass] ?: creators.entries.firstOrNull {
+//            modelClass.isAssignableFrom(it.key)
+//        }?.value ?: throw IllegalArgumentException("Unknown model class $modelClass")
+//        return try {
+//            creator.get() as T
+//        } catch (e: Exception) {
+//            throw RuntimeException(e)
+//        }
+//    }
 //}

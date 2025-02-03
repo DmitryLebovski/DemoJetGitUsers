@@ -21,23 +21,30 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.demojetgitusers.CheckConnection
+import com.example.demojetgitusers.DemoJetGitApp
 import com.example.demojetgitusers.R
 import com.example.demojetgitusers.Routes.FOLLOWERS_SCREEN
 import com.example.demojetgitusers.UsersState
 import com.example.demojetgitusers.createUsersComponent
+import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
 import com.example.demojetgitusers.reusable_components.UserCard
 import com.example.jetgitusers.reusable_components.ShimmerUserList
 
 @Composable
 fun UsersScreen (
-    navController: NavController
+    navController: NavController,
+//    viewModel: UsersViewModel
 ) {
     val context = LocalContext.current
 
     val usersComponent = remember { context.createUsersComponent() }
     val viewModel = remember { usersComponent.usersViewModel() }
+
+//    val factory = (LocalContext.current.applicationContext as DemoJetGitApp).appComponent.getViewModelFactory()
+//    val viewModel: UsersViewModel = viewModel(factory = factory)
 
     val uiState by viewModel.uiState.collectAsState()
     val lazyListState = rememberLazyListState()

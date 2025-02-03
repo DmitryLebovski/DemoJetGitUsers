@@ -9,6 +9,7 @@ android {
     namespace = "com.example.demojetgitusers"
     compileSdk = 35
 
+
     defaultConfig {
         applicationId = "com.example.demojetgitusers"
         minSdk = 31
@@ -41,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
