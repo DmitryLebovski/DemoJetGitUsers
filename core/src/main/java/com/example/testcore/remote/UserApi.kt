@@ -11,7 +11,7 @@ interface UserApi {
     @GET("/users")
     suspend fun getUsers(
         @Query("per_page") perPage: Int = 20,
-        @Header("Authorization") authorization: String = "Bearer",
+        @Header("Authorization") authorization: String = "Bearer ",
         @Query("since") sinceId: Int = 0
     ): Response<List<User>>
 

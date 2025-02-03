@@ -1,11 +1,14 @@
 package com.example.demojetgitusers.di
 
+import com.example.testcore.remote.UserApi
+import com.example.testcore.repository.FollowersRepository
+import com.example.testcore.repository.repositoryImpl.FollowersRepositoryImpl
 import dagger.Module
 import dagger.Provides
 
 @Module
 object FollowersModule {
     @Provides
-    fun provideFollowersRepository(api: com.example.testcore.remote.UserApi): com.example.testcore.repository.FollowersRepository =
-        com.example.testcore.repository.repositoryImpl.FollowersRepositoryImpl(api)
+    fun provideFollowersRepository(api: UserApi): FollowersRepository =
+        FollowersRepositoryImpl(api)
 }

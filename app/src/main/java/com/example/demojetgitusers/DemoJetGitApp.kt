@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.demojetgitusers.components.AppComponent
 import com.example.demojetgitusers.components.DaggerAppComponent
+import com.example.demojetgitusers.components.FollowersSubcomponent
 
 class DemoJetGitApp: Application() {
     lateinit var appComponent: AppComponent

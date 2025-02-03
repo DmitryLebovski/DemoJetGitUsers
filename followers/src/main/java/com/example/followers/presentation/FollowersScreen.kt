@@ -21,11 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.followers.ProviderFollowersViewModel
 import com.example.followers.R
 import com.example.jetgitusers.reusable_components.ShimmerUserList
 import com.example.network.UsersState
@@ -37,12 +39,13 @@ fun FollowersScreen(
     username: String,
     popBackStack: () -> Unit,
     navigateToFollowers: (String) -> Unit,
-    viewModel: FollowersViewModel
+    component: ProviderFollowersViewModel
 ){
 
 //    val followersComponent = remember { context.createFollowersComponent() }
 //    val viewModel = remember { followersComponent.followersViewModel() }
 
+    val viewModel = remember { component.followersViewModel() }
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {

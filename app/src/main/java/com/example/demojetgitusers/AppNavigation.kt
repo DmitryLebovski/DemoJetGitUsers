@@ -47,7 +47,6 @@ fun AppNavigation(
 
             val app = LocalContext.current.applicationContext as DemoJetGitApp
             val followersComponent = remember { app.appComponent.followersSubcomponent().create() }
-            val followersViewModel = remember { followersComponent.followersViewModel() }
 
             FollowersScreen(
                 username = username,
@@ -57,7 +56,7 @@ fun AppNavigation(
                 popBackStack = {
                     navController.popBackStack()
                 },
-                viewModel = followersViewModel
+                component = followersComponent
             )
         }
     }
