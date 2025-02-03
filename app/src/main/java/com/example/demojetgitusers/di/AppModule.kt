@@ -3,23 +3,11 @@ package com.example.demojetgitusers.di
 //import com.example.demojetgitusers.presentation.users_screen.DaggerViewModelFactory
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.demojetgitusers.data.UserApi
-import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
-import com.example.demojetgitusers.presentation.users_screen.UsersViewModel
-import dagger.Binds
-import dagger.MapKey
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.IntoMap
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Inject
-import javax.inject.Provider
 import javax.inject.Singleton
-import kotlin.reflect.KClass
-
 
 @Module
 object AppModule {
@@ -32,7 +20,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUserApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
+    fun provideUserApi(retrofit: Retrofit): com.example.testcore.remote.UserApi = retrofit.create(
+        com.example.testcore.remote.UserApi::class.java)
 
     @Provides
     @Singleton

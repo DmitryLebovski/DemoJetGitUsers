@@ -21,17 +21,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.demojetgitusers.CheckConnection
-import com.example.demojetgitusers.DemoJetGitApp
 import com.example.demojetgitusers.R
 import com.example.demojetgitusers.Routes.FOLLOWERS_SCREEN
-import com.example.demojetgitusers.UsersState
-import com.example.demojetgitusers.createUsersComponent
-import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
-import com.example.demojetgitusers.reusable_components.UserCard
 import com.example.jetgitusers.reusable_components.ShimmerUserList
+import com.example.network.CheckConnection
+import com.example.network.UsersState
 
 @Composable
 fun UsersScreen (

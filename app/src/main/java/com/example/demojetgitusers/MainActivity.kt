@@ -4,19 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModelProvider
-import com.example.demojetgitusers.components.AppComponent
-import com.example.demojetgitusers.components.FollowersSubcomponent
-import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
-import com.example.demojetgitusers.presentation.users_screen.UsersViewModel
 import com.example.demojetgitusers.ui.theme.DemoJetGitUsersTheme
-import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
 
@@ -39,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appComponent.inject(this) // создание всех необходимых зависимостей
+        //appComponent.inject(this) // создание всех необходимых зависимостей
 
          //usersViewModel = ViewModelProvider(this, viewModelFactory)[UsersViewModel::class.java]
         // viewModelProvider управляет созданием и хранением viewModel экземпляров,

@@ -1,8 +1,6 @@
 package com.example.demojetgitusers.components
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
-import com.example.demojetgitusers.MainActivity
 import com.example.demojetgitusers.di.AppModule
 //import com.example.demojetgitusers.di.DaggerViewModelFactory
 //import com.example.demojetgitusers.di.ViewModelModule
@@ -11,7 +9,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class,
+@Component(modules = [
+    AppModule::class
 //    ViewModelModule::class
 ])
 interface AppComponent { // связывает модули и места где они понадобятся, в hilt - AndroidEntryPoint
@@ -30,7 +29,6 @@ interface AppComponent { // связывает модули и места где
 
     fun usersSubcomponent(): UsersSubcomponent.Factory
     fun followersSubcomponent(): FollowersSubcomponent.Factory
-    fun inject(mainActivity: MainActivity)
 
     //fun getViewModelFactory(): ViewModelProvider.Factory
 }

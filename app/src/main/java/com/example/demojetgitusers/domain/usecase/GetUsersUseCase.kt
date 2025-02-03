@@ -2,8 +2,8 @@ package com.example.demojetgitusers.domain.usecase
 
 import android.content.Context
 import android.widget.Toast
-import com.example.demojetgitusers.domain.model.User
-import com.example.demojetgitusers.domain.repository.UserRepository
+import com.example.testcore.model.User
+import com.example.testcore.repository.UserRepository
 import javax.inject.Inject
 
 class GetUsersUseCase @Inject constructor(

@@ -1,7 +1,7 @@
 package com.example.demojetgitusers.components
 
 import com.example.demojetgitusers.di.FollowersModule
-import com.example.demojetgitusers.presentation.followers_screen.FollowersViewModel
+import com.example.followers.presentation.FollowersViewModel
 import dagger.Subcomponent
 
 @Subcomponent(modules = [FollowersModule::class])

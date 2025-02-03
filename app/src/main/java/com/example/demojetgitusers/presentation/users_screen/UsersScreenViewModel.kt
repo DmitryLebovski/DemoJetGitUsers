@@ -1,9 +1,12 @@
 package com.example.demojetgitusers.presentation.users_screen
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.demojetgitusers.UsersState
+import com.example.demojetgitusers.components.UsersSubcomponent
+import com.example.demojetgitusers.appComponent
 import com.example.demojetgitusers.domain.usecase.GetUsersUseCase
+import com.example.network.UsersState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -64,5 +67,9 @@ class UsersViewModel @Inject constructor(
 
 sealed class UsersIntent {
     data object LoadUsers : UsersIntent()
+}
+
+fun Context.createUsersComponent(): UsersSubcomponent {
+    return appComponent.usersSubcomponent().create()
 }
 
